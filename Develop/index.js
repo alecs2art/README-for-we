@@ -26,19 +26,19 @@ const questions = [
         message: 'Please write a short description of your project.'
     },
     {
-        type: 'list',
+        type: 'checkbox',
         name: 'license',
         message: 'What kind of license should your project have?',
         choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'BSD 3', 'None']
     },
     {       
-        type: 'list',
+        type: 'checkbox',
         name: 'dependencies',
         message: 'What command should be run to install dependencies?',
         choices: ['File System', 'Inquirer', 'None']  
     },
     {
-        type: 'list',
+        type: 'checkbox',
         name: 'tests',
         message: 'What command should be run to run tests?',
         choices: ['npm test', 'None']  
@@ -68,8 +68,9 @@ function init() {
     inquirer.prompt(questions)
     .then(data => {
         writeToFile('README.md', generateMarkdown(data));
+        console.log('README Generated!');
     })
-    console.log('README Generated!');
+    
 }
 
 // Function call to initialize app
