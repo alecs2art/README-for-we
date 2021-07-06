@@ -34,16 +34,18 @@ const questions = [
     {       
         type: 'list',
         name: 'dependencies',
-        message: 'What command should be run to install dependencies?'  
+        message: 'What command should be run to install dependencies?',
+        choices: ['File System', 'Inquirer', 'None']  
     },
     {
         type: 'list',
         name: 'tests',
-        message: 'What command should be run to run tests?'    
+        message: 'What command should be run to run tests?',
+        choices: ['npm test', 'None']  
     },
     {
         type: 'input',
-        name: 'repo',
+        name: 'usage',
         message: 'What does the user need to know about using the repo?'
     },
     {
@@ -64,9 +66,10 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-    .then(answers => {
-        writeToFile('README.md', generateMarkdown(answers));
+    .then(data => {
+        writeToFile('README.md', generateMarkdown(data));
     })
+    console.log('README Generated!');
 }
 
 // Function call to initialize app
